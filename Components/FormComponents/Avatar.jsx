@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import AddAvatarButton from "./AddAvatarButton";
 
-const Photo = () => {
+const Avatar = () => {
   return (
     <View style={styles.container}>
       <View style={styles.avatar}>
@@ -18,16 +18,11 @@ const styles = StyleSheet.create({
   },
   avatar: {
     position: "absolute",
-
+    top: -60,
     justifyContent: "center",
-
-    top: -153,
-
     width: 120,
     height: 120,
-
     borderRadius: 16,
-
     backgroundColor: "#F6F6F6",
   },
   avatarButton: {
@@ -37,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Photo;
+export default Avatar;
