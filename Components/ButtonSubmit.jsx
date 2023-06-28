@@ -1,37 +1,14 @@
-import React from 'react';
 import { Text, StyleSheet, Pressable } from 'react-native';
 
-export function ButtonSingup(props) {
-  const {
-    onPress = () => {
-      console.log('click');
-    },
-    title = 'Зареєстуватися',
-  } = props;
-
+const SubmitBtn = ({ title }) => {
   return (
-    <Pressable style={styles.button} onPress={onPress}>
-      <Text style={styles.text}>{title}</Text>
+    <Pressable style={styled.button} >
+      <Text style={styled.text}>{title}</Text>
     </Pressable>
   );
 }
 
-export function ButtonLogin(props) {
-  const {
-    onPress = () => {
-      console.log('click');
-    },
-    title = 'Увійти',
-  } = props;
-
-  return (
-    <Pressable style={styles.button} onPress={onPress}>
-      <Text style={styles.text}>{title}</Text>
-    </Pressable>
-  );
-}
-
-const styles = StyleSheet.create({
+const styled = StyleSheet.create({
   button: {
     height: 50,
     borderRadius: 100,
@@ -45,3 +22,4 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
+export default SubmitBtn;

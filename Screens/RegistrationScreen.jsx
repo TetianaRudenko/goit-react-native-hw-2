@@ -1,131 +1,52 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
-import Avatar from "../Components/FormComponents/Avatar";
-import { ButtonSingup } from "../Components/ButtonSubmit";
-
+import { StatusBar } from 'expo-status-bar';
+import {
+  TouchableWithoutFeedback,
+  KeyboardAvoidingView,
+  Keyboard,
+  ImageBackground,
+  StyleSheet,
+} from 'react-native';
+import imageBg from "../assets/imageBg.png";
+import RegistrationForm from "../Components/RegistrationForm";
 
 const RegistrationScreen = () => {
   
-  const [login, setLogin] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loginFocus, setLoginFocus] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
-  const [passwordFocus, setPasswordFocus] = useState(false);
+  return ( 
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ImageBackground
+          source={imageBg}
+          resizeMode="cover"
+          style={styles.image}
+        >
 
-  return (  
-    <View style={styles.container}>
-      <Avatar />
-      <Text style={styles.title}>Реєстрація</Text>
-      <TextInput
-        placeholder="Логін"
-        onChangeText={(newLogin) => setLogin(newLogin)}
-        defaultValue={login}
-        style={loginFocus ? styles.inputOnFocus : styles.input}
-        onFocus={() => setLoginFocus(true)}
-        onBlur={() => setLoginFocus(false)}
-      />
-      <TextInput
-        placeholder="Адреса електронної пошти"
-        onChangeText={(newEmail) => setEmail(newEmail)}
-        defaultValue={email}
-        style={emailFocus ? styles.inputOnFocus : styles.input}
-        onFocus={() => setEmailFocus(true)}
-        onBlur={() => setEmailFocus(false)}
-      />
-      <TextInput
-        placeholder="Пароль"
-        onChangeText={(newPassword) => setPassword(newPassword)}
-        defaultValue={password}
-        style={passwordFocus ? styles.passwordOnFocus : styles.password}
-        onFocus={() => setPasswordFocus(true)}
-        onBlur={() => setPasswordFocus(false)}
-      />
-      <ButtonSingup />
-      <Text style={styles.text}>Вже є акаунт? Увійти</Text>
-    </View>
+          <RegistrationForm />
+
+          <StatusBar style="auto" />
+        </ImageBackground>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+       
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     justifyContent: 'flex-end',
-    marginTop: 263,
-    paddingTop: 92,
-    paddingHorizontal: 16,
-    paddingBottom: 66,
-
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-    backgroundColor: "#fff",
   },
-  title: {
-    marginTop: 92,
-    marginBottom: 32,
-
-    textAlign: 'center',
-    color: "#212121",
-    fontWeight: 'bold',
-    fontSize: 30,
-    //fontFamily: "Roboto-Bold",
-    letterSpacing: 0.3,
-  },
-  input: {
-    height: 50,
-    padding: 16,
-    marginBottom: 16,
-    fontSize: 16,
-    lineHeight: 19,
-    color: '#BDBDBD',
-    backgroundColor: "#F6F6F6",
-    borderWidth: 1,
-    borderColor: "#E8E8E8",
-    borderRadius: 8,
-  },
-  inputOnFocus: {
-    height: 50,
-    padding: 16,
-    marginBottom: 16,
-    fontSize: 16,
-    lineHeight: 19,
-    color: '#212121',
-    backgroundColor: "#F6F6F6",
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#FF6C00",
-  },
-  password: {
-    height: 50,
-    padding: 16,
-    marginBottom: 43,
-    fontSize: 16,
-    lineHeight: 19,
-    color: '#BDBDBD',
-    backgroundColor: '#F6F6F6',
-    borderWidth: 1,
-    borderColor: '#E8E8E8',
-    borderRadius: 8,
-  },
-  passwordOnFocus: {
-    height: 50,
-    padding: 16,
-    marginBottom: 43,
-    fontSize: 16,
-    lineHeight: 19,
-    color: '#212121',
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#FF6C00',
-    borderRadius: 8,
-  },
-  text: {
-    marginTop: 16,
-  
-    textAlign: 'center',
-    fontSize: 16,
-    lineHeight: 19,
-    color: '#1B4371',
+  image: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    //justifyContent: 'center',
+    //position: "absolute",
+    //top: 0,
+    //left: 0,
+    //width: Dimensions.get("window").width,
+   // height: Dimensions.get("window").height,
   },
 });
 
